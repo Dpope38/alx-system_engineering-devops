@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Set the desired key name
+key_name="school"
+
+# Generate the RSA key pair with 4096 bits and protect it with the passphrase "betty"
+openssl genpkey -algorithm RSA -out "${key_name}_private.pem" -aes256 -pass pass:betty -aes-256-cbc -pkeyopt rsa_keygen_bits:4096
+
+# Extract the public key from the private key
+openssl rsa -in "${key_name}_private.pem" -pubout -out "${key_name}_public.pem"
+
+# Provide feedback to the user
+echo "RSA key pair '${key_name}_private.pem' and '${key_name}_public.pem' created successfully."
