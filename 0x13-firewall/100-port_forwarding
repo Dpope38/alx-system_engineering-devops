@@ -1,0 +1,11 @@
+sudo ufw allow 8080/tcp
+
+#edit the ufw conf file
+sudo vim /etc/ufw/sysctl.conf
+
+#uncomment the net/ipv4/ip_forward=1
+net/ipv4/ip_forward=1
+
+sudo ufw route allow proto tcp from any to any port 8080
+
+sudo ufw reload
