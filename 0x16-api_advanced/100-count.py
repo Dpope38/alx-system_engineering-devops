@@ -3,8 +3,7 @@
 import requests
 
 
-
-def count_word(subreddit, words, instance = {},after="", count=0):
+def count_word(subreddit, words, instance={}, after="", count=0):
     """Return count of word in subreddit
         Args:
             subreddit: subreddit to search
@@ -13,16 +12,14 @@ def count_word(subreddit, words, instance = {},after="", count=0):
             after: after page
             count: count of word
     """
-    
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
     params = {
             "after": after,
             "count": count,
             "limit": 10
             }
     response = requests(url, headers=headers, params=params)
-    
     try:
         results = response.json()
         if response.status_code == 404:
@@ -49,10 +46,3 @@ def count_word(subreddit, words, instance = {},after="", count=0):
         instances = sorted(instance.items(), key=lambda x: x[1], reverse=True)
     else:
         return count_word(subreddit, words, instance, after, count)
-    
-            
-        
-    
-   
-    
-    
