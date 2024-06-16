@@ -1,7 +1,25 @@
 #!/usr/bin/env bash
 
-
-sudo apt update
-https://github.com/Dpope38/AirBnB_clone_v2.git
-sudo apt install python3-pip
-pip3 install flask
+# Update Package Manager
+sudo apt-get update
+sudo apt-get install -y nginx
+# Install pip
+sudo apt-get install -y python3-pip
+# Install Flask, flask_cors, sqlalchemy Using PIP
+pip install flask
+pip install flask_cors
+pip install sqlalchemy
+# Install net-tools
+sudo apt install -y net-tools
+# Install GUNICORN
+sudo apt-get install -y gunicorn
+# Remove any current AIRBNB Repositoty
+rm -rf AirBnB_clone_v*
+# Clone Repository
+git clone https://github.com/hardope/AirBnB_clone_v2
+git clone https://github.com/hardope/AirBnB_clone_v3
+git clone https://github.com/hardope/AirBnB_clone_v4
+#change directory to AirBnBv2
+cd AirBnB_clone_v2/
+#bind gunicorn on  port 5000
+gunicorn --bind 0.0.0.0:5000 web_flask.0-hello:app
