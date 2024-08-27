@@ -1,12 +1,15 @@
 server {
+        #Listen on port 80
         listen 80;
-        listen [::]:80;
-        add_header X-Served-By $HOSTNAME;
 
-        server_name 35.175.126.203;
+        #Create a HTTP custom header
+        add_header X-Served-By 305559-web-01;
 
-        root /var/www/school;
-        index index.html;
+
+        #Server public address
+        server_name 100.26.215.93;
+
+       
 
         # Serve /airbnb-onepage/ route from AirBnB_clone_v2
         location = /airbnb-onepage/ {
